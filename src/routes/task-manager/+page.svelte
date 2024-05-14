@@ -41,7 +41,10 @@
   <div class="flex-it h-full">
     <div class="flex-it flex-row rounded-xl h-full">
       {#each taskList as list(list.id)}
-        <TaskList listName={list.text}/>
+        <TaskList 
+          listName={list.text}
+          tasks={list.items}
+        />
       {/each}
     </div>
   </div>
