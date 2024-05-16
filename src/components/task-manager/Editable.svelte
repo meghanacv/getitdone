@@ -1,10 +1,12 @@
 <script>
   let isEditing = false;
+  let value="Default";
 </script>
 
 {#if isEditing}
   <div class="flex-it">
-    <textarea />
+   <!--<textarea bind:value={value}/>--> 
+    <textarea bind:value/>
     <button 
         on:click={() => isEditing = false} 
         class="flex underline">Close</button>
