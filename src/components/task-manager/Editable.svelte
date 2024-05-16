@@ -1,6 +1,7 @@
 <script>
+    export let defaultValue;
   let isEditing = false;
-  let value="Default";
+  let value=defaultValue;
 </script>
 
 {#if isEditing}
