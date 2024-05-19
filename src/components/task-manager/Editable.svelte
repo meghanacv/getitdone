@@ -12,7 +12,7 @@
     <button
       on:click={() => {
         isEditing = false;
-        dispatch("whatever");
+        dispatch("editCancel");
       }}
       class="flex underline"
     >
