@@ -31,11 +31,17 @@
       ]
     }
   ];
+
+  let _taskList;
+
+  taskListStore.subscribe((value) => {
+    _taskList = value;
+  });
 </script>
 
 <div class="p-10 h-full">
 
-  <div class="text-white">{JSON.stringify(taskListStore)}</div>
+  <div class="text-white">{JSON.stringify(_taskList)}</div>
   <div class="text-white text-2xl mb-6">Some List</div>
   <button class="text-xl mb-3 text-white font-bold cursor-pointer hover:underline flex items-start">
     + Add List

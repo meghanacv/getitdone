@@ -1,7 +1,14 @@
 <script>
   import TaskItem from "./TaskItem.svelte";
+  import { taskListStore } from "../../stores/tasks";
   export let listName;
   export let tasks;
+
+  let taskList;
+
+  taskListStore.subscribe((value)=> {
+    taskList = value;
+  })
 </script>
 
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
@@ -29,6 +36,8 @@
         </div>
       </div>
     </div>
+
+    <div>{JSON.stringify(taskList)}</div>
     <div class="overflow-x-hidden overflow-y-auto with-scrollbar p-2">
       {#each tasks as task(task.id)}
         <TaskItem task/>
