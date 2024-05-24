@@ -1,13 +1,15 @@
 import { writable } from "svelte/store";
 
-function createStore(){
-    const taskList = writable([]);
+function createStore() {
+  const taskList = writable([]);
+  let i = 0;
 
-    setTimeout(() => {
-        taskList.set([1,2,3]);
-    }, 1000)
+  setInterval(() => {
+    taskList.set([1, 2, 3]);
+    taskList.update((list) => [...list, i++]);
+  }, 1000);
 
-    return taskList;
+  return taskList;
 }
 
 export const taskListStore = createStore();
