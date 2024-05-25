@@ -6,9 +6,14 @@
 
   let taskList;
 
-  taskListStore.subscribe((value)=> {
+  const unsub = taskListStore.subscribe((value)=> {
     taskList = value;
   })
+
+  onDestroy(() => {
+    unsub();
+  })
+
 </script>
 
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
