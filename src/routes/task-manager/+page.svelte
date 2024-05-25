@@ -34,6 +34,9 @@
 </script>
 
 <div class="p-10 h-full">
+
+  <a href="/" class="text-white">Go home</a>
+
   <div class="text-white">
     {JSON.stringify($taskListStore)}
   </div>
