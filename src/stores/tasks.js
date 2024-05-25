@@ -1,13 +1,16 @@
-import { writable } from "svelte/store";
+import { readable } from "svelte/store";
 
 function createStore() {
-  const taskList = writable([], () => {
+  const taskList = readable([], (set) => {
     let i = 0;
+    let list = [];
+
     const id = setInterval(() => {
-      taskList.update((list) => [...list, i++]);
+      list = [...list, i++];
+      set(list);
     }, 2000);
 
-    return function stop () {
+    return function stop() {
       clearInterval(id);
     };
   });
