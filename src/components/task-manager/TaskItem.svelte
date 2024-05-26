@@ -2,10 +2,12 @@
   import Editable from "./Editable.svelte";
 
   export let task;
+  export let listIdx;
   let value = task.text;
 
   function updateTask(event) {
     alert(`
+    List Idx: ${listIdx}
     Task Id: ${task.id}
     Update value: ${event.detail.taskText}
     `)
