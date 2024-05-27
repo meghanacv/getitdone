@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
-  
+
   export let value;
   let isEditing = false;
 </script>
@@ -21,7 +21,6 @@
     >
       Close</button
     >
-    <div>{value}</div>
   </div>
 {:else}
   <button on:click={() => (isEditing = true)}>
