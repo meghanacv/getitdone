@@ -1,18 +1,18 @@
 <script>
   import Editable from "./Editable.svelte";
+  import { taskListStore } from "../../stores/tasks";
 
   export let task;
   export let listIdx;
   let value = task.text;
 
   function updateTask(event) {
-    alert(`
-    List Idx: ${listIdx}
-    Task Id: ${task.id}
-    Update value: ${event.detail.taskText}
-    `)
-  }
+    const taskIdx = $taskListStore[listIdx].items.findIndex((item) => item.id === task.id);
 
+    if (taskIdx > -1) {
+      alert(`Update task idx: ${taskIdx}`);
+    }
+  }
 </script>
 
 <div class="flex-it border border-solid p-2 rounded-xl bg-slate-500 mb-2 cursor-pointer">
