@@ -36,13 +36,16 @@ function createStore() {
   return {
     subscribe,
     updateTask: (task, listIdx) => {
-      const taskIdx = get(taskList)[listIdx].items.findIndex((item) => item.id === task.id);
-      if (taskIdx > -1) {
-        taskList.update((list) => {
+      taskList.update((list) => {
+        const taskIdx = get(taskList)[listIdx].items.findIndex((item) => item.id === task.id);
+        if (taskIdx > -1) {
           list[listIdx].items[taskIdx] = { ...task };
-          return list;
-        });
-      }
+        }
+        return list;
+      });
+    },
+    addList: () => {
+      alert("adding")
     }
   };
 }
