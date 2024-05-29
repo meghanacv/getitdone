@@ -4,24 +4,30 @@
 
   export let task;
   export let listIdx;
+  export let taskIdx;
+
   let value = task.text;
 
   function updateTask(event) {
-    taskListStore.updateTask({
-      id: task.id,
-      text: event.detail.taskText
-    }, listIdx)
+    taskListStore.updateTask(
+      {
+        id: task.id,
+        text: event.detail.taskText
+      },
+      listIdx
+    );
   }
 
-  function dragStart() {
-    console.log("Dragging item")
+  function dragStart(e) {
+    const data = { listIdx, taskIdx };
+    e.dataTransfer.setData("text/plain", JSON.stringify(data));
   }
 </script>
 
-<div 
-draggable={true}
-on:dragstart={dragStart}
-class="flex-it border border-solid p-2 rounded-xl bg-slate-500 mb-2 cursor-pointer"
+<div
+  draggable={true}
+  on:dragstart={dragStart}
+  class="flex-it border border-solid p-2 rounded-xl bg-slate-500 mb-2 cursor-pointer"
 >
   <div class="flex-it">
     <Editable bind:value on:editCancel={updateTask}>

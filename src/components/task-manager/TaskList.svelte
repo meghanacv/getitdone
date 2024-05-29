@@ -5,9 +5,14 @@
   export let tasks;
   export let listIdx;
 
-  function drop() {
-    console.log("dropped");
+  function drop(e) {
+    const sourceJson = e.dataTransfer.getData("text/plain")
+    const sourceData = JSON.parse(sourceJson)
+    console.log("Dropping to list idx: " + listIdx)
+    console.log("Source list idx: " + sourceData.listIdx)
+    console.log("Task item idx: " + sourceData.listIdx)
   }
+
 </script>
 
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
@@ -42,8 +47,8 @@
       </div>
     </div>
     <div class="overflow-x-hidden overflow-y-auto with-scrollbar p-2">
-      {#each tasks as task (task.id)}
-        <TaskItem {task} {listIdx} />
+      {#each tasks as task, taskIdx (task.id)}
+        <TaskItem {task} {listIdx} {taskIdx} />
       {/each}
     </div>
     <button on:click={() => taskListStore.addTask(listIdx)} class="underline flex p-2">
