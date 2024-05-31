@@ -4,17 +4,22 @@
   export let list;
   export let listIdx;
 
+  let listHoverId = null;
+
   function drop(e) {
-    const sourceJson = e.dataTransfer.getData("text/plain")
-    const sourceData = JSON.parse(sourceJson)
+    const sourceJson = e.dataTransfer.getData("text/plain");
+    const sourceData = JSON.parse(sourceJson);
 
-    taskListStore.moveTask(sourceData, listIdx)
+    taskListStore.moveTask(sourceData, listIdx);
   }
-
 </script>
 
+<div class="text-white">{listHoverId}</div>
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
   <div
+    on:dragenter={() => {
+      listHoverId = list.id;
+    }}
     on:dragover={(e) => {
       e.preventDefault();
     }}
