@@ -24,6 +24,7 @@
       e.preventDefault();
     }}
     on:drop={drop}
+    class:hovering={list.id === listHoverId}
     class="bg-slate-400 flex-it rounded-xl max-h-full border-2 border-gray-500"
   >
     <div class="flex-it m-3">
@@ -59,3 +60,10 @@
     </button>
   </div>
 </div>
+
+
+<style>
+  .hovering {
+    border: 2px solid orange;
+  }
+</style>
