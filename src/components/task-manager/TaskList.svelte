@@ -1,11 +1,12 @@
 <script context="module">
-  import {writable} from "svelte/store"
+  import { writable } from "svelte/store";
   let listHoverId = writable(null);
 </script>
 
 <script>
   import TaskItem from "./TaskItem.svelte";
   import { taskListStore } from "../../stores/tasks";
+  import { send, receive } from "../../transitions";
 
   export let list;
   export let listIdx;
@@ -21,7 +22,7 @@
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
   <div
     on:dragenter={() => {
-      listHoverId.set(list.id)
+      listHoverId.set(list.id);
     }}
     on:dragover={(e) => {
       e.preventDefault();
@@ -55,7 +56,12 @@
     </div>
     <div class="overflow-x-hidden overflow-y-auto with-scrollbar p-2">
       {#each list.items as task, taskIdx (task.id)}
-        <TaskItem {task} {listIdx} {taskIdx} />
+        <div
+        in:receive={{key: task.id}}
+        out:send={{key: task.id}}
+        >
+          <TaskItem {task} {listIdx} {taskIdx} />
+        </div>
       {/each}
     </div>
     <button on:click={() => taskListStore.addTask(listIdx)} class="underline flex p-2">
@@ -63,7 +69,6 @@
     </button>
   </div>
 </div>
-
 
 <style>
   .hovering {
