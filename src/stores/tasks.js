@@ -76,6 +76,9 @@ function createStore() {
         list[moveToListIdx].items.push(task);
         return list;
       })
+    },
+    removeTask: () => {
+      alert('Removing task!')
     }
   };
 }
