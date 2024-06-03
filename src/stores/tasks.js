@@ -77,8 +77,11 @@ function createStore() {
         return list;
       })
     },
-    removeTask: () => {
-      alert('Removing task!')
+    removeTask: (listIdx, taskIdx) => {
+      update((list) => {
+        list[listIdx].items.splice(taskIdx, 1);
+        return list;
+      })
     }
   };
 }
