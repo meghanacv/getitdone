@@ -1,3 +1,4 @@
+import { list } from "postcss";
 import { writable, get } from "svelte/store";
 
 const DEFAULT_DATA = [
@@ -33,7 +34,7 @@ const DEFAULT_DATA = [
 function createStore() {
   const storedList = localStorage.getItem("task-manager-store");
 
-  const _taskList = storedList ?  JSON.parse(storedList) : DEFAULT_DATA;
+  const _taskList = storedList ? JSON.parse(storedList) : DEFAULT_DATA;
 
   const taskList = writable(DEFAULT_DATA);
   const { subscribe, update } = taskList;
@@ -60,37 +61,43 @@ function createStore() {
     },
     addTask: (listIdx) => {
       update((list) => {
-        const {items} = list[listIdx]
+        const { items } = list[listIdx];
         list[listIdx].items = [
-          ...items, {
+          ...items,
+          {
             id: new Date().toISOString(),
             text: "what to do?"
           }
         ];
         return list;
-      })
+      });
     },
     moveTask: (sourceData, moveToListIdx) => {
-      update(list => {
+      update((list) => {
         const [task] = list[sourceData.listIdx].items.splice(sourceData.taskIdx, 1);
         list[moveToListIdx].items.push(task);
         return list;
-      })
+      });
     },
     removeTask: (listIdx, taskIdx) => {
       update((list) => {
         list[listIdx].items.splice(taskIdx, 1);
         return list;
-      })
+      });
+    },
+    removeList: (listIdx) => {
+      update(() => {
+        list.splice(listIdx, 1);
+        return list;
+      });
     }
   };
 }
 
 export const taskListStore = createStore();
 
-
-taskListStore.subscribe((list)=> {
-  if(list){
-    localStorage.setItem("task-manager-store", JSON.stringify(list))
+taskListStore.subscribe((list) => {
+  if (list) {
+    localStorage.setItem("task-manager-store", JSON.stringify(list));
   }
-})
+});
