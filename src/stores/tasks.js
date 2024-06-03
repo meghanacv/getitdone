@@ -86,7 +86,7 @@ function createStore() {
       });
     },
     removeList: (listIdx) => {
-      update(() => {
+      update((list) => {
         list.splice(listIdx, 1);
         return list;
       });
