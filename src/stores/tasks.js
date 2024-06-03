@@ -90,6 +90,12 @@ function createStore() {
         list.splice(listIdx, 1);
         return list;
       });
+    },
+    updateList: (updatedtext, listIdx) => {
+      update((list) => {
+        list[listIdx].text = updatedtext;
+        return list;
+      })
     }
   };
 }
