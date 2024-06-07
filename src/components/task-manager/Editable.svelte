@@ -17,7 +17,7 @@
             value
         });
       }}
-      class="flex underline"
+      class="flex"
     >
       Close</button
     >

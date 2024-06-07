@@ -27,7 +27,7 @@
 <div
   draggable={true}
   on:dragstart={dragStart}
-  class="flex-it border border-solid p-2 rounded-xl bg-slate-500 mb-2 cursor-pointer"
+  class="flex-it p-2 rounded-xl bg-zinc-300 mb-2 cursor-pointer"
 >
   <div class="flex-it">
     <Editable bind:value on:editCancel={updateTask}>

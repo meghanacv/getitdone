@@ -36,7 +36,7 @@
     }}
     on:drop={drop}
     class:hovering={list.id === $listHoverId}
-    class="bg-slate-400 flex-it rounded-xl max-h-full border-2 border-gray-500"
+    class="bg-gray-100 flex-it rounded-xl max-h-full border-1 border-gray-100"
   >
     <div class="flex-it m-3">
       <Editable bind:value on:editCancel={updateList}>
@@ -76,14 +76,14 @@
         </div>
       {/each}
     </div>
-    <button on:click={() => taskListStore.addTask(listIdx)} class="underline flex p-2">
-      + Add Task
+    <button on:click={() => taskListStore.addTask(listIdx)} class="flex p-2">
+      + New
     </button>
   </div>
 </div>
 
 <style>
   .hovering {
-    border: 2px solid orange;
+    border: 2px solid #A78BFA;
   }
 </style>

@@ -54,7 +54,7 @@ function createStore() {
         ...list,
         {
           id: new Date().toISOString(),
-          text: "new list",
+          text: "New list",
           items: []
         }
       ]);
@@ -66,7 +66,7 @@ function createStore() {
           ...items,
           {
             id: new Date().toISOString(),
-            text: "what to do?"
+            text: "Add Task"
           }
         ];
         return list;
