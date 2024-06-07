@@ -25,6 +25,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"node": "^20.14.0"
+		"node": "18.x"
 	}
 }
