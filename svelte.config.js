@@ -32,7 +32,7 @@ const config = {
   // This is just an example, replace it with your function configuration
   functions: {
     "api/**/*.js": {
-      runtime: "nodejs14.x" // or any supported version
+      runtime: "nodejs18.x" // or any supported version
     }
   }
 };
